@@ -1,0 +1,45 @@
+name: Revisar catálogo
+
+# En cada pull request revisa el formato de las tablas (sin abrir enlaces,
+# porque algunos sitios bloquean a los servidores de GitHub y daría falsos rojos).
+# Los enlaces se revisan a mano desde la pestaña Actions con "Run workflow".
+on:
+  pull_request:
+    paths:
+      - "README.md"
+      - "herramientas/**"
+      - ".github/workflows/revisar.yml"
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  formato:
+    runs-on: ubuntu-latest
+    steps:
+      # actions/checkout v7.0.1, fijada por commit
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      # actions/setup-python v7.1.0, fijada por commit
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: "3.12"
+      - name: Formato de las tablas
+        run: python herramientas/revisar_enlaces.py --sin-red
+
+  enlaces:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: "3.12"
+      - name: Enlaces vivos
+        run: python herramientas/revisar_enlaces.py

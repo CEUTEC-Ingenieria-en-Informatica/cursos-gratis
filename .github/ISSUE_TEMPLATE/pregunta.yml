@@ -1,0 +1,25 @@
+name: Pregunta
+description: Una duda sobre el material, un ejercicio o cómo aportar.
+title: "Pregunta: "
+labels: ["pregunta"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        No hay preguntas tontas. Entre más contexto des, más rápido te pueden ayudar.
+  - type: input
+    id: donde
+    attributes:
+      label: Repo y archivo (si aplica)
+      placeholder: README.md, ruta de Flutter y Dart
+  - type: textarea
+    id: pregunta
+    attributes:
+      label: Tu pregunta
+    validations:
+      required: true
+  - type: textarea
+    id: intentado
+    attributes:
+      label: Qué intentaste
+      description: Pegá el código o el error que te sale (entre tres comillas invertidas se ve mejor).

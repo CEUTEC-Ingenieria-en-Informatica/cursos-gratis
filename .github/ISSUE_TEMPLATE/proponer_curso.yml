@@ -1,0 +1,58 @@
+name: Proponer curso
+description: Un curso oficial y gratis para el catálogo, o un tema que falta en el material.
+title: "Curso: "
+labels: ["propuesta de curso"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Solo entran cursos gratis y desde el sitio oficial de la plataforma. Nada de enlaces de afiliado, acortadores ni copias de cursos de pago.
+  - type: input
+    id: nombre
+    attributes:
+      label: Nombre del curso o del tema
+    validations:
+      required: true
+  - type: input
+    id: enlace
+    attributes:
+      label: Enlace oficial
+      description: El enlace directo al curso en la plataforma que lo da.
+      placeholder: https://
+  - type: dropdown
+    id: ruta
+    attributes:
+      label: Ruta
+      options:
+        - Flutter y Dart
+        - Diseño UI/UX y Figma
+        - Web
+        - IA
+        - Nube
+        - Git y GitHub
+        - Inglés técnico
+        - Certificaciones gratis
+        - Material propio (no es un curso externo)
+    validations:
+      required: true
+  - type: input
+    id: datos
+    attributes:
+      label: Idioma, nivel, horas y si da certificado gratis
+      placeholder: ES, Principiante, ~10 horas, sí da certificado
+  - type: textarea
+    id: por_que
+    attributes:
+      label: Por qué vale la pena
+      description: Qué aprendiste o qué lo hace mejor que lo que ya está en la lista.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmo
+    attributes:
+      label: Antes de enviar
+      options:
+        - label: Abrí el enlace hoy y funciona.
+          required: true
+        - label: Es gratis de verdad (no es solo una prueba que después cobra).
+          required: true

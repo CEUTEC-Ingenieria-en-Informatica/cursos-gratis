@@ -1,0 +1,24 @@
+name: Enlace caído o dato equivocado
+description: Un curso que ya no abre, dejó de ser gratis o tiene mal el idioma, el nivel, las horas o el certificado.
+title: "Enlace: "
+labels: ["error en material"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por avisar. Con estos datos lo encontramos y lo corregimos rápido.
+        Si es una duda y no un error, usá el formulario "Pregunta".
+  - type: input
+    id: curso
+    attributes:
+      label: Curso
+      description: El nombre como aparece en la tabla.
+    validations:
+      required: true
+  - type: textarea
+    id: que_pasa
+    attributes:
+      label: Qué pasa
+      description: Por ejemplo, el enlace da error 404, ahora piden pago o el curso ya está en español.
+    validations:
+      required: true
